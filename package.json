@@ -1,0 +1,33 @@
+{
+  "name": "@pipeworx/mcp-ca-hcai-hospital-finance",
+  "version": "0.1.0",
+  "description": "California hospital quarterly financial and utilization data (HCAI, formerly OSHPD).",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mcp-ca-hcai-hospital-finance": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "ca-hcai-hospital-finance"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipeworx-io/mcp-ca-hcai-hospital-finance.git"
+  },
+  "mcpName": "io.github.pipeworx-io/ca-hcai-hospital-finance",
+  "pipeworx": {
+    "mode": "gateway",
+    "slug": "ca-hcai-hospital-finance",
+    "gatewaySlug": "ca-hcai-hospital-finance",
+    "sourceHash": "v1-c0f2b5db65ad8e259d3b552509b6d58eafe31135c5da416bd6b86cb97df0c72e",
+    "sourceCommit": "6f1ec9c23dbf3cbd7fef76bd342bcfbdb8239433"
+  }
+}

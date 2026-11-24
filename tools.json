@@ -1,0 +1,103 @@
+[
+  {
+    "name": "ca_hospital_finance",
+    "description": "California hospital financials from HCAI (Department of Health Care Access and Information, formerly OSHPD): the quarterly financial and utilization report for each licensed hospital. Returns gross patient revenue, deductions, net patient revenue, other operating revenue, total operating expense, derived operating margin, non-operating revenue, assets, liabilities, equity, beds, discharges and patient days, for the trailing four quarters ending in the chosen quarter. Use for \"2025 Q1 operating margin for Adventist Health Rideout\", \"California hospital revenue and expenses\", \"compare hospitals in Los Angeles county\". Filter by hospital name words, facility number or county; omit year/quarter for the latest published quarter.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "hospital": {
+          "type": "string",
+          "description": "Words from the hospital name, e.g. \"Rideout\" or \"Cedars-Sinai\"."
+        },
+        "facility_no": {
+          "type": "string",
+          "description": "HCAI facility number (9 digits), e.g. \"106580996\"."
+        },
+        "county": {
+          "type": "string",
+          "description": "County name, e.g. \"Los Angeles\". Lists hospitals in the county."
+        },
+        "year": {
+          "type": "number",
+          "description": "Report year, e.g. 2025."
+        },
+        "quarter": {
+          "type": "number",
+          "description": "Quarter 1-4 of the report year. Each report covers the four quarters ending then."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Max hospitals (1-100, default 10)."
+        }
+      }
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "object"
+        },
+        "total_matches": {
+          "type": "number"
+        },
+        "returned": {
+          "type": "number"
+        },
+        "hospitals": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "note": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "period",
+        "total_matches",
+        "returned",
+        "hospitals",
+        "source"
+      ]
+    }
+  },
+  {
+    "name": "ca_hospital_periods",
+    "description": "Which quarterly California hospital financial and utilization reports HCAI has published (year, quarter, release date), newest first. Use before ca_hospital_finance to see the latest quarter available.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Max periods (default 12, max 60)."
+        }
+      }
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "number"
+        },
+        "periods": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "count",
+        "periods",
+        "source"
+      ]
+    }
+  }
+]
